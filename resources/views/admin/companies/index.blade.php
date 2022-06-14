@@ -4,7 +4,7 @@
 <div class="container">
     <a href="{{ route('admin/companies/crear') }}" class="btn btn-success mt-4 ml-3"> Agregar </a>
 
-    <table class="table table-striped table-bordered table-hover">
+    <table class="table table-striped table-bordered table-hover" id="tb-lt">
         <thead>
             <tr>
                 <th>Nombre</th>

@@ -4,6 +4,17 @@
             <section class="panel">
                 <div class="panel-body">
 
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+
+                    @endif
+
                     @if (!empty($companies->id))
 
                         <div class="form-group">
@@ -31,17 +42,16 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="img">Selecciona una imagen para el logo:</label>
+                            <label for="logo">Selecciona una imagen para el logo:</label>
                             <div>
-                                <input name="img" type="file" id="img">
+                                <input name="logo" type="file" id="logo">
                                 <br>
                                 <br>
 
                                 @if (!empty($companies->logo))
                                     <span>Logo Actual: </span>
                                     <br>
-                                    <img src="/storage/{{ $companies->logo }}" width="200"
-                                        class="img-fluid">
+                                    <img src="/storage/{{ $companies->logo }}" width="200" class="img-fluid">
                                 @else
                                     Aún no se ha cargado una imagen para esta compañia
                                 @endif

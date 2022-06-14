@@ -24,7 +24,11 @@ class RequestEmployees extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nombre' => 'required|string|max:10',
+            'apellido' => 'required|string|max:10',
+            'correo' => 'required',
+            'telefono' => 'required|string|max:8',
+            'id_company' => 'required|string|max:10',
         ];
     }
 }

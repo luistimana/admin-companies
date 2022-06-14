@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Storage;
 class CompaniesController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $companies = Companies::all();
@@ -23,6 +28,13 @@ class CompaniesController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'nombre' => 'required|string|max:50',
+            'correo' => 'required',
+            'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|dimensions:max_width=100,max_height=100',
+            'pagina_web' => 'required',
+        ]);
+
         $companies = new Companies;
         $companies->nombre = $request->nombre;
         $companies->correo = $request->correo;
@@ -44,6 +56,13 @@ class CompaniesController extends Controller
 
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'nombre' => 'required|string|max:20',
+            'correo' => 'required',
+            'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|dimensions:max_width=100,max_height=100',
+            'pagina_web' => 'required',
+        ]);
+
         $companies = Companies::find($id);
         $companies->nombre = $request->nombre;
         $companies->correo = $request->correo;

@@ -3,10 +3,24 @@
         <div class="col-md-12">
             <section class="panel">
                 <div class="panel-body">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+
+                    @endif
+
 
                     @if (!empty($employees->id))
                         <div class="form-group">
                             <label for="nombre">Nombre:</label>
+                            @if ($errors->any())
+                                <p>Hay errores!</p>
+                            @endif
                             <div>
                                 <input class="form-control" placeholder="Nombre" required="required" name="nombre"
                                     type="text" id="nombre" value="{{ $employees->nombre }}">
@@ -15,6 +29,9 @@
 
                         <div class="form-group">
                             <label for="apellido">Apellido:</label>
+                            @if ($errors->any())
+                                <p>Hay errores!</p>
+                            @endif
                             <div>
                                 <input class="form-control" placeholder="Apellido" required="required" name="apellido"
                                     type="text" id="apellido" value="{{ $employees->apellido }}">
@@ -23,6 +40,9 @@
 
                         <div class="form-group">
                             <label for="correo">Correo Electrónico:</label>
+                            @if ($errors->any())
+                                <p>Hay errores!</p>
+                            @endif
                             <div>
                                 <input class="form-control" placeholder="Correo Electronico" required="required"
                                     name="correo" type="email" id="correo" value="{{ $employees->correo }}">
@@ -31,10 +51,15 @@
 
                         <div class="form-group">
                             <label for="compania_id">Compañia:</label>
+                            @if ($errors->any())
+                                <p>Hay errores!</p>
+                            @endif
 
                             <select name="compania_id" id="compania_id" class="form-control">
                                 @foreach ($companies as $company)
-                                    <option value="{{ $company->id }}" {{$company->id == $employees->compania_id ? 'selected' : '' }} >{{ $company->nombre}}</option>
+                                    <option value="{{ $company->id }}"
+                                        {{ $company->id == $employees->compania_id ? 'selected' : '' }}>
+                                        {{ $company->nombre }}</option>
                                 @endforeach
                             </select>
 
@@ -42,6 +67,9 @@
 
                         <div class="form-group">
                             <label for="telefono">Teléfono:</label>
+                            @if ($errors->any())
+                                <p>Hay errores!</p>
+                            @endif
                             <div>
                                 <input class="form-control" placeholder="Telefono" required="required" name="telefono"
                                     type="number" id="telefono" value="{{ $employees->telefono }}">
@@ -77,7 +105,7 @@
 
                             <select name="compania_id" id="compania_id" class="form-control">
                                 @foreach ($companies as $company)
-                                    <option value="{{ $company->id }}">{{ $company->nombre}}</option>
+                                    <option value="{{ $company->id }}">{{ $company->nombre }}</option>
                                 @endforeach
 
                             </select>

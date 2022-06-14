@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class EmployeesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function index()
     {
@@ -25,6 +29,14 @@ class EmployeesController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'nombre' => 'required|string|max:20',
+            'apellido' => 'required|string|max:20',
+            'compania_id' => 'required',
+            'correo' => 'required',
+            'telefono' => 'required|max:8|min:8',
+        ]);
+
         $employees = new employees;
         $employees->nombre = $request->nombre;
         $employees->apellido = $request->apellido;
@@ -46,6 +58,14 @@ class EmployeesController extends Controller
 
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'nombre' => 'required|string|max:20',
+            'apellido' => 'required|string|max:20',
+            'compania_id' => 'required',
+            'correo' => 'required',
+            'telefono' => 'required|max:8|min:8',
+        ]);
+
         $employees = Employees::find($id);
         $employees->nombre = $request->nombre;
         $employees->apellido = $request->apellido;
