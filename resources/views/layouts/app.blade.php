@@ -77,6 +77,9 @@
             @yield('contentcompanies')
             @yield('contentcompaniescreate')
             @yield('contentcompaniesactualizar')
+            @yield('contentemployees')
+            @yield('contentemployeescreate')
+            @yield('contentemployeesactualizar')
         </main>
     </div>
 </body>

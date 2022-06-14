@@ -31,6 +31,9 @@
                                     <li class="list-group-item">
                                         <a href="{{ route('admin/companies') }}"> Compañia</a>
                                     </li>
+                                    <li class="list-group-item">
+                                        <a href="{{ route('admin/employees') }}"> Empleados</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>

@@ -36,4 +36,14 @@ Route::put('admin/companies/eliminar/{id}', 'CompaniesController@destroy')->name
 
 // Rutas CRUD empleados
 /* Crear */
-Route::get('admin/employees/crear', 'EmployeesController@crear')->name('admin/employees/crear');
+Route::get('admin/employees/crear', 'EmployeesController@create')->name('admin/employees/crear');
+Route::put('admin/employees/store', 'EmployeesController@store')->name('admin/employees/store');
+/* Leer */
+Route::get('admin/employees', 'EmployeesController@index')->name('admin/employees');
+
+/* Actualizar */
+Route::get('admin/employees/actualizar/{id}', 'EmployeesController@actualizar')->name('admin/employees/actualizar');
+Route::put('admin/employees/update/{id}', 'EmployeesController@update')->name('admin/employees/update');
+
+/* Eliminar */
+Route::put('admin/employees/eliminar/{id}', 'EmployeesController@destroy')->name('admin/employees/eliminar');
